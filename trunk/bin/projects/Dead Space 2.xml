@@ -1,0 +1,21 @@
+<project>
+	<name>Dead Space 2</name>
+	<dependencies>
+		<dependency>Shared</dependency>
+	</dependencies>
+	<list_location>Dead Space 2</list_location>
+	<install_locations>
+		<install_location>
+			<action type="registry" key="HKEY_LOCAL_MACHINE\SOFTWARE\EA Games\Dead Space 2" value="Install Dir" />
+		</install_location>
+		<install_location>
+			<action type="registry" key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\EA Games\Dead Space 2" value="Install Dir" />
+		</install_location>
+		<install_location>
+			<action type="registry" key="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\deadspace2.exe" value="Path" />
+		</install_location>
+		<install_location>
+			<action type="registry" key="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\GameUX\Games\{6C48FC36-5305-4A57-B2EA-BD09C2A8A666}" value="ConfigApplicationPath" />
+		</install_location>
+	</install_locations>
+</project>
