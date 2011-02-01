@@ -1,0 +1,27 @@
+<project>
+	<name>Dante's Inferno</name>
+	<dependencies>
+		<dependency>Shared</dependency>
+	</dependencies>
+	<list_location>Dante's Inferno</list_location>
+	<install_locations>
+		<install_location>
+			<action type="path">T:\PS3</action>
+			<action type="combine">Dante's Inferno</action>
+			<action type="combine">PS3_GAME</action>
+			<action type="combine">USRDIR</action>
+		</install_location>
+		<install_location>
+			<action type="path">T:\PS3</action>
+			<action type="combine">BLUS30405</action>
+			<action type="combine">PS3_GAME</action>
+			<action type="combine">USRDIR</action>
+		</install_location>
+		<install_location>
+			<action type="path">T:\PS3</action>
+			<action type="combine">BLES00713</action>
+			<action type="combine">PS3_GAME</action>
+			<action type="combine">USRDIR</action>
+		</install_location>
+	</install_locations>
+</project>
