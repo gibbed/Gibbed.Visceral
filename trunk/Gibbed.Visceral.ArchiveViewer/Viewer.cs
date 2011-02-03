@@ -225,11 +225,13 @@ namespace Gibbed.Visceral.ArchiveViewer
                     return;
                 }
 
+                var entry = (BigFile.Entry)root.Tag; 
+
                 saving = new List<BigFile.Entry>();
-                saving.Add((BigFile.Entry)root.Tag);
+                saving.Add(entry);
 
                 lookup = new Dictionary<uint, string>();
-                lookup.Add((uint)root.Tag, Path.GetFileName(this.saveFileDialog.FileName));
+                lookup.Add(entry.Name, Path.GetFileName(this.saveFileDialog.FileName));
                 basePath = Path.GetDirectoryName(this.saveFileDialog.FileName);
 
                 settings.DontOverwriteFiles = false;
