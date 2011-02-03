@@ -417,5 +417,8 @@ loading_screen\mp_solar_loading_screen_global.toc
 mpskins.lua
 player_upgrades.lua
 text\localetable.txt
+text_assets\text\8cd0374e.str
+text_assets\text\aa794682.str
+text_assets\text\e583f5c2.str
 text_assets\text_assets_global.str
 text_assets\text_assets_global.toc
