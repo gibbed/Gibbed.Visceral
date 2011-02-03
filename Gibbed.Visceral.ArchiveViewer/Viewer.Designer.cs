@@ -37,6 +37,7 @@
             this.saveKnownListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.saveOnlyKnownFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveDuplicateNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dontOverwriteFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileList = new System.Windows.Forms.TreeView();
             this.fileMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -45,7 +46,7 @@
             this.saveFilesDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.saveKnownFileListDialog = new System.Windows.Forms.SaveFileDialog();
-            this.saveDuplicateNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dontSaveAudioFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStrip.SuspendLayout();
             this.fileMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +115,8 @@
             this.settingsButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveOnlyKnownFilesMenuItem,
             this.saveDuplicateNamesMenuItem,
-            this.dontOverwriteFilesMenuItem});
+            this.dontOverwriteFilesMenuItem,
+            this.dontSaveAudioFilesMenuItem});
             this.settingsButton.Image = global::Gibbed.Visceral.ArchiveViewer.Properties.Resources.Settings;
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
@@ -127,6 +129,13 @@
             this.saveOnlyKnownFilesMenuItem.Name = "saveOnlyKnownFilesMenuItem";
             this.saveOnlyKnownFilesMenuItem.Size = new System.Drawing.Size(238, 22);
             this.saveOnlyKnownFilesMenuItem.Text = "Save only &known files";
+            // 
+            // saveDuplicateNamesMenuItem
+            // 
+            this.saveDuplicateNamesMenuItem.CheckOnClick = true;
+            this.saveDuplicateNamesMenuItem.Name = "saveDuplicateNamesMenuItem";
+            this.saveDuplicateNamesMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.saveDuplicateNamesMenuItem.Text = "Save files with &duplicate names";
             // 
             // dontOverwriteFilesMenuItem
             // 
@@ -175,12 +184,12 @@
             this.saveKnownFileListDialog.DefaultExt = "filelist";
             this.saveKnownFileListDialog.Filter = "File List (*.filelist)|*.filelist";
             // 
-            // saveDuplicateNamesMenuItem
+            // dontSaveAudioFilesMenuItem
             // 
-            this.saveDuplicateNamesMenuItem.CheckOnClick = true;
-            this.saveDuplicateNamesMenuItem.Name = "saveDuplicateNamesMenuItem";
-            this.saveDuplicateNamesMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.saveDuplicateNamesMenuItem.Text = "Save files with &duplicate names";
+            this.dontSaveAudioFilesMenuItem.CheckOnClick = true;
+            this.dontSaveAudioFilesMenuItem.Name = "dontSaveAudioFilesMenuItem";
+            this.dontSaveAudioFilesMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.dontSaveAudioFilesMenuItem.Text = "Don\'t save &audio files";
             // 
             // Viewer
             // 
@@ -219,6 +228,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveKnownListToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveKnownFileListDialog;
         private System.Windows.Forms.ToolStripMenuItem saveDuplicateNamesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dontSaveAudioFilesMenuItem;
     }
 }
 
