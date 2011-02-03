@@ -94,15 +94,14 @@ namespace Gibbed.Visceral.ArchiveViewer
                 Dictionary<uint, string> lookup = 
                     this.Manager.ActiveProject == null ? null : this.Manager.ActiveProject.FileHashLookup;
 
-                foreach (uint hash in this.Archive.Keys
-                    .OrderBy(k => k, new FileNameHashComparer(lookup)))
+                foreach (var entry in this.Archive.Entries
+                    .OrderBy(k => k.Name, new FileNameHashComparer(lookup)))
                 {
-                    BigFile.Entry entry = this.Archive[hash];
                     TreeNode node = null;
 
-                    if (lookup != null && lookup.ContainsKey(hash) == true)
+                    if (lookup != null && lookup.ContainsKey(entry.Name) == true)
                     {
-                        string fileName = lookup[hash];
+                        string fileName = lookup[entry.Name];
                         string pathName = Path.GetDirectoryName(fileName);
                         TreeNodeCollection parentNodes = knownNode.Nodes;
 
@@ -124,14 +123,20 @@ namespace Gibbed.Visceral.ArchiveViewer
                             }
                         }
 
-                        node = parentNodes.Add(null, Path.GetFileName(fileName) + " [" + hash.ToString("X8") + "]", 3, 3);
+                        node = parentNodes.Add(null, Path.GetFileName(fileName) /*+ " [" + entry.Name.ToString("X8") + "]"*/, 3, 3);
                     }
                     else
                     {
-                        node = unknownNode.Nodes.Add(null, hash.ToString("X8"), 3, 3);
+                        node = unknownNode.Nodes.Add(null, entry.Name.ToString("X8"), 3, 3);
                     }
 
-                    node.Tag = hash;
+                    node.Tag = entry;
+
+                    if (entry.Duplicate == true)
+                    {
+                        node.Text += " (duplicate)";
+                        node.ForeColor = System.Drawing.Color.Blue;
+                    }
                 }
 
                 if (knownNode.Nodes.Count > 0)
@@ -203,11 +208,10 @@ namespace Gibbed.Visceral.ArchiveViewer
 
             string basePath;
             Dictionary<uint, string> lookup;
-            List<uint> saving;
+            List<BigFile.Entry> saving;
 
             SaveProgress.SaveAllSettings settings;
-            settings.DecompressUnknownFiles = this.decompressUnknownFilesMenuItem.Checked;
-            settings.DecompressSmallArchives = this.decompressSmallArchivesMenuItem.Checked;
+            settings.SaveFilesWithDuplicateNames = this.saveDuplicateNamesMenuItem.Checked;
             settings.SaveOnlyKnownFiles = false;
             settings.DontOverwriteFiles = this.dontOverwriteFilesMenuItem.Checked;
 
@@ -221,8 +225,8 @@ namespace Gibbed.Visceral.ArchiveViewer
                     return;
                 }
 
-                saving = new List<uint>();
-                saving.Add((uint)root.Tag);
+                saving = new List<BigFile.Entry>();
+                saving.Add((BigFile.Entry)root.Tag);
 
                 lookup = new Dictionary<uint, string>();
                 lookup.Add((uint)root.Tag, Path.GetFileName(this.saveFileDialog.FileName));
@@ -237,7 +241,7 @@ namespace Gibbed.Visceral.ArchiveViewer
                     return;
                 }
 
-                saving = new List<uint>();
+                saving = new List<BigFile.Entry>();
                 
                 List<TreeNode> nodes = new List<TreeNode>();
                 nodes.Add(root);
@@ -257,7 +261,7 @@ namespace Gibbed.Visceral.ArchiveViewer
                             }
                             else
                             {
-                                saving.Add((uint)child.Tag);
+                                saving.Add((BigFile.Entry)child.Tag);
                             }
                         }
                     }
@@ -307,8 +311,7 @@ namespace Gibbed.Visceral.ArchiveViewer
                 this.Manager.ActiveProject == null ? null : this.Manager.ActiveProject.FileHashLookup;
 
             SaveProgress.SaveAllSettings settings;
-            settings.DecompressUnknownFiles = this.decompressUnknownFilesMenuItem.Checked;
-            settings.DecompressSmallArchives = this.decompressSmallArchivesMenuItem.Checked;
+            settings.SaveFilesWithDuplicateNames = this.saveDuplicateNamesMenuItem.Checked;
             settings.SaveOnlyKnownFiles = this.saveOnlyKnownFilesMenuItem.Checked;
             settings.DontOverwriteFiles = this.dontOverwriteFilesMenuItem.Checked;
 
@@ -358,11 +361,15 @@ namespace Gibbed.Visceral.ArchiveViewer
             if (this.Archive != null &&
                 this.Manager.ActiveProject != null)
             {
-                foreach (uint hash in this.Archive.Keys)
+                foreach (var entry in this.Archive.Entries)
                 {
-                    if (this.Manager.ActiveProject.FileHashLookup.ContainsKey(hash))
+                    if (this.Manager.ActiveProject.FileHashLookup.ContainsKey(entry.Name) == true)
                     {
-                        names.Add(this.Manager.ActiveProject.FileHashLookup[hash]);
+                        var name = this.Manager.ActiveProject.FileHashLookup[entry.Name];
+                        if (names.Contains(name) == false)
+                        {
+                            names.Add(name);
+                        }
                     }
                 }
             }

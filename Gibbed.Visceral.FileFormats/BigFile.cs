@@ -12,85 +12,15 @@ namespace Gibbed.Visceral.FileFormats
         {
             public uint Offset;
             public uint Size;
+            public uint Name;
+            public bool Duplicate;
         }
 
-        private List<uint> _Keys = new List<uint>();
-        private Hashtable Entries = new Hashtable();
-
-        public IEnumerable<uint> Keys
-        {
-            get { return this._Keys; }
-        }
+        public List<Entry> Entries = new List<Entry>();
 
         public void Serialize(Stream output)
         {
             throw new NotImplementedException();
-        }
-
-        public bool Contains(uint key)
-        {
-            return this.Entries.ContainsKey(key);
-        }
-
-        public Entry Get(uint key)
-        {
-            if (this.Entries.ContainsKey(key) == false)
-            {
-                throw new KeyNotFoundException();
-            }
-
-            return (Entry)this.Entries[key];
-        }
-
-        public void Set(uint key, Entry entry)
-        {
-            this.Entries[key] = entry;
-        }
-
-        public Entry this[uint key]
-        {
-            get
-            {
-                return this.Get(key);
-            }
-            set
-            {
-                this.Set(key, value);
-            }
-        }
-
-        public void Set(uint key, uint offset, uint size)
-        {
-            this.Set(key, new Entry()
-            {
-                Offset = offset,
-                Size = size,
-            });
-        }
-
-        public void Remove(uint key)
-        {
-            if (this.Entries.ContainsKey(key) == false)
-            {
-                throw new KeyNotFoundException();
-            }
-
-            this.Entries.Remove(key);
-        }
-
-        public void Move(uint oldKey, uint newKey)
-        {
-            if (this.Entries.ContainsKey(oldKey) == false)
-            {
-                throw new KeyNotFoundException();
-            }
-            else if (this.Entries.ContainsKey(newKey) == true)
-            {
-                throw new ArgumentException("already contains the new key", "newKey");
-            }
-
-            this.Entries[newKey] = this.Entries[oldKey];
-            this.Entries.Remove(oldKey);
         }
 
         public void Deserialize(Stream input)
@@ -108,27 +38,25 @@ namespace Gibbed.Visceral.FileFormats
             uint headerSize = input.ReadValueU32(false);
 
             this.Entries.Clear();
-            this._Keys.Clear();
-
+            var duplicateNames = new List<uint>();
             for (uint i = 0; i < fileCount; i++)
             {
-                Entry entry = new Entry();
+                var entry = new Entry();
                 entry.Offset = input.ReadValueU32(false);
                 entry.Size = input.ReadValueU32(false);
-                uint name = input.ReadValueU32(false);
+                entry.Name = input.ReadValueU32(false);
 
-                if (this.Entries.ContainsKey(name) == true)
+                if (duplicateNames.Contains(entry.Name) == true)
                 {
-                    if (entry.Size != ((Entry)this.Entries[name]).Size)
-                    {
-                        throw new InvalidCastException();
-                    }
-
-                    continue;
+                    entry.Duplicate = true;
+                }
+                else
+                {
+                    entry.Duplicate = false;
+                    duplicateNames.Add(entry.Name);
                 }
 
-                this._Keys.Add(name);
-                this.Entries.Add(name, entry);
+                this.Entries.Add(entry);
             }
         }
     }

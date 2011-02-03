@@ -47,13 +47,11 @@ namespace Gibbed.Visceral.ArchiveViewer
 		public void SaveAll(object oinfo)
 		{
 			SaveAllInformation info = (SaveAllInformation)oinfo;
-			Dictionary<uint, string> UsedNames = new Dictionary<uint, string>();
-
-            IEnumerable<uint> saving;
+            IEnumerable<BigFile.Entry> saving;
 
             if (info.Saving == null)
             {
-                saving = info.Archive.Keys;
+                saving = info.Archive.Entries;
             }
             else
             {
@@ -66,17 +64,32 @@ namespace Gibbed.Visceral.ArchiveViewer
             int current = 0;
 
             byte[] buffer = new byte[0x4000];
-			foreach (var hash in saving)
+			foreach (var entry in saving)
 			{
                 current++;
 
-                BigFile.Entry index = info.Archive.Get(hash);
+                if (entry.Duplicate == true &&
+                    info.Settings.SaveFilesWithDuplicateNames == false)
+                {
+                    this.SetStatus("Skipping...", (int)(((float)current / (float)total) * 100.0f));
+                    continue;
+                }
+
 				string fileName = null;
 
-                if (info.FileNames.ContainsKey(hash) == true)
+                if (info.FileNames.ContainsKey(entry.Name) == true)
 				{
-					fileName = info.FileNames[hash];
-					UsedNames[hash] = info.FileNames[hash];
+                    fileName = info.FileNames[entry.Name];
+                    
+                    if (entry.Duplicate == true)
+                    {
+                        string newFileName;
+                        
+                        newFileName = Path.GetFileNameWithoutExtension(fileName);
+                        newFileName = string.Format("{0} (duplicate #{1})", newFileName, current);
+                        newFileName = Path.ChangeExtension(newFileName, Path.GetExtension(fileName));
+                        fileName = Path.Combine(Path.GetDirectoryName(fileName), newFileName);
+                    }
 				}
 				else
 				{
@@ -86,11 +99,11 @@ namespace Gibbed.Visceral.ArchiveViewer
 						continue;
 					}
 
-					fileName = hash.ToString("X8");
+                    fileName = entry.Name.ToString("X8");
 
                     if (true)
                     {
-                        info.Stream.Seek(index.Offset, SeekOrigin.Begin);
+                        info.Stream.Seek(entry.Offset, SeekOrigin.Begin);
                         byte[] guess = new byte[16];
                         int read = info.Stream.Read(guess, 0, guess.Length);
 
@@ -171,6 +184,16 @@ namespace Gibbed.Visceral.ArchiveViewer
                     }
 
                     fileName = Path.Combine("__UNKNOWN", fileName);
+
+                    if (entry.Duplicate == true)
+                    {
+                        string newFileName;
+
+                        newFileName = Path.GetFileNameWithoutExtension(fileName);
+                        newFileName = string.Format("{0} (duplicate #{1})", newFileName, current);
+                        newFileName = Path.ChangeExtension(newFileName, Path.GetExtension(fileName));
+                        fileName = Path.Combine(Path.GetDirectoryName(fileName), newFileName);
+                    }
 				}
 
 				string path = Path.Combine(info.BasePath, fileName);
@@ -185,11 +208,11 @@ namespace Gibbed.Visceral.ArchiveViewer
 
                 Directory.CreateDirectory(Path.Combine(info.BasePath, Path.GetDirectoryName(fileName)));
 
-                info.Stream.Seek(index.Offset, SeekOrigin.Begin);
+                info.Stream.Seek(entry.Offset, SeekOrigin.Begin);
 
                 using (var output = File.Create(path))
                 {
-                    int left = (int)index.Size;
+                    int left = (int)entry.Size;
                     while (left > 0)
                     {
                         int read = info.Stream.Read(buffer, 0, Math.Min(left, buffer.Length));
@@ -209,8 +232,7 @@ namespace Gibbed.Visceral.ArchiveViewer
         public struct SaveAllSettings
         {
             public bool SaveOnlyKnownFiles;
-            public bool DecompressUnknownFiles;
-            public bool DecompressSmallArchives;
+            public bool SaveFilesWithDuplicateNames;
             public bool DontOverwriteFiles;
         }
 
@@ -219,7 +241,7 @@ namespace Gibbed.Visceral.ArchiveViewer
 			public string BasePath;
 			public Stream Stream;
 			public BigFile Archive;
-            public List<uint> Saving;
+            public IEnumerable<BigFile.Entry> Saving;
 			public Dictionary<uint, string> FileNames;
             public SaveAllSettings Settings;
 		}
@@ -229,7 +251,7 @@ namespace Gibbed.Visceral.ArchiveViewer
             IWin32Window owner,
             Stream stream,
             BigFile archive,
-            List<uint> saving,
+            IEnumerable<BigFile.Entry> saving,
             Dictionary<uint, string> fileNames,
             string basePath,
             SaveAllSettings settings)
