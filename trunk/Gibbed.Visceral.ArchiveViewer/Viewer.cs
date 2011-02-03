@@ -214,6 +214,7 @@ namespace Gibbed.Visceral.ArchiveViewer
             settings.SaveFilesWithDuplicateNames = this.saveDuplicateNamesMenuItem.Checked;
             settings.SaveOnlyKnownFiles = false;
             settings.DontOverwriteFiles = this.dontOverwriteFilesMenuItem.Checked;
+            settings.DontSaveAudioFiles = false; //this.dontSaveAudioFilesMenuItem.Checked;
 
             var root = this.fileList.SelectedNode;
             if (root.Nodes.Count == 0)
@@ -316,6 +317,7 @@ namespace Gibbed.Visceral.ArchiveViewer
             settings.SaveFilesWithDuplicateNames = this.saveDuplicateNamesMenuItem.Checked;
             settings.SaveOnlyKnownFiles = this.saveOnlyKnownFilesMenuItem.Checked;
             settings.DontOverwriteFiles = this.dontOverwriteFilesMenuItem.Checked;
+            settings.DontSaveAudioFiles = this.dontSaveAudioFilesMenuItem.Checked;
 
             SaveProgress progress = new SaveProgress();
             progress.ShowSaveProgress(

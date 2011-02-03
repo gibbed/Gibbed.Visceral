@@ -204,6 +204,13 @@ namespace Gibbed.Visceral.ArchiveViewer
                     continue;
                 }
 
+                if (info.Settings.DontSaveAudioFiles == true &&
+                    Path.GetExtension(path) == ".snu")
+                {
+                    this.SetStatus("Skipping...", (int)(((float)current / (float)total) * 100.0f));
+                    continue;
+                }
+
                 this.SetStatus(fileName, (int)(((float)current / (float)total) * 100.0f));
 
                 Directory.CreateDirectory(Path.Combine(info.BasePath, Path.GetDirectoryName(fileName)));
@@ -234,6 +241,7 @@ namespace Gibbed.Visceral.ArchiveViewer
             public bool SaveOnlyKnownFiles;
             public bool SaveFilesWithDuplicateNames;
             public bool DontOverwriteFiles;
+            public bool DontSaveAudioFiles;
         }
 
 		private struct SaveAllInformation
