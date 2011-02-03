@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Viewer));
             this.mainToolStrip = new System.Windows.Forms.ToolStrip();
             this.projectComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.openButton = new System.Windows.Forms.ToolStripButton();
@@ -39,6 +40,7 @@
             this.saveOnlyKnownFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDuplicateNamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dontOverwriteFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dontSaveAudioFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileList = new System.Windows.Forms.TreeView();
             this.fileMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +48,6 @@
             this.saveFilesDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.saveKnownFileListDialog = new System.Windows.Forms.SaveFileDialog();
-            this.dontSaveAudioFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStrip.SuspendLayout();
             this.fileMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +145,13 @@
             this.dontOverwriteFilesMenuItem.Size = new System.Drawing.Size(238, 22);
             this.dontOverwriteFilesMenuItem.Text = "Don\'t &overwrite files";
             // 
+            // dontSaveAudioFilesMenuItem
+            // 
+            this.dontSaveAudioFilesMenuItem.CheckOnClick = true;
+            this.dontSaveAudioFilesMenuItem.Name = "dontSaveAudioFilesMenuItem";
+            this.dontSaveAudioFilesMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.dontSaveAudioFilesMenuItem.Text = "Don\'t save &audio files";
+            // 
             // fileList
             // 
             this.fileList.ContextMenuStrip = this.fileMenuStrip;
@@ -184,13 +192,6 @@
             this.saveKnownFileListDialog.DefaultExt = "filelist";
             this.saveKnownFileListDialog.Filter = "File List (*.filelist)|*.filelist";
             // 
-            // dontSaveAudioFilesMenuItem
-            // 
-            this.dontSaveAudioFilesMenuItem.CheckOnClick = true;
-            this.dontSaveAudioFilesMenuItem.Name = "dontSaveAudioFilesMenuItem";
-            this.dontSaveAudioFilesMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.dontSaveAudioFilesMenuItem.Text = "Don\'t save &audio files";
-            // 
             // Viewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +199,7 @@
             this.ClientSize = new System.Drawing.Size(640, 320);
             this.Controls.Add(this.fileList);
             this.Controls.Add(this.mainToolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Viewer";
             this.Text = "Gibbed\'s Visceral Archive Viewer";
             this.Load += new System.EventHandler(this.OnLoad);
