@@ -10,15 +10,15 @@ namespace Gibbed.Visceral.FileFormats.StreamSet
     public class FileInfo
     {
         public FileBuild Build;
-        public ushort Unknown04;
-        public ushort Unknown06;
+        public ushort Unknown04; // flags?
+        public ushort Unknown06; // flags?
         
         public uint Type;
 
         public uint Unknown0C;
         public uint Type2;
         public uint Unknown14;
-        public uint Unknown18;
+        public uint Unknown18; // seems to be some kind of hash of the file name
 
         public uint TotalSize;
 

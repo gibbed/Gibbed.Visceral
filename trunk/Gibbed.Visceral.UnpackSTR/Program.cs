@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using Gibbed.Helpers;
 using Gibbed.Visceral.FileFormats;
 using NDesk.Options;
-using System.Xml;
 using StreamSet = Gibbed.Visceral.FileFormats.StreamSet;
 
 namespace Gibbed.Visceral.UnpackSTR
