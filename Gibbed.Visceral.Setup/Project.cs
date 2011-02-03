@@ -162,10 +162,6 @@ namespace Gibbed.Visceral.Setup
                         throw new InvalidOperationException("duplicate hash");
                     }
 
-                    if (hash == 0xA1EF3435)
-                    {
-                    }
-
                     this.NameHashLookup[hash] = line; // .Add(hash, line);
                 }
 
