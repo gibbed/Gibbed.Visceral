@@ -72,7 +72,7 @@ namespace Gibbed.Visceral.PackBig
                 inputPaths.AddRange(extras.Skip(1));
             }
 
-            var filePaths = new SortedDictionary<string, string>();
+            var paths = new SortedDictionary<uint, string>();
 
             if (verbose == true)
             {
@@ -93,26 +93,26 @@ namespace Gibbed.Visceral.PackBig
                     string fullPath = Path.GetFullPath(path);
                     string partPath = fullPath.Substring(inputPath.Length + 1).ToLowerInvariant();
 
-                    if (filePaths.ContainsKey(partPath) == true)
+                    uint hash = 0xFFFFFFFF;
+                    if (partPath.ToUpper().StartsWith("__UNKNOWN") == true)
+                    {
+                        hash = uint.Parse(
+                            Path.GetFileNameWithoutExtension(fullPath),
+                            System.Globalization.NumberStyles.AllowHexSpecifier);
+                    }
+                    else
+                    {
+                        hash = partPath.ToLowerInvariant().HashFileName();
+                    }
+
+                    if (paths.ContainsKey(hash) == true)
                     {
                         Console.WriteLine("Ignoring {0} duplicate.", partPath);
                         continue;
                     }
 
-                    filePaths[partPath] = fullPath;
+                    paths[hash] = fullPath;
                 }
-            }
-
-            // build a nice list of hash <-> paths
-            var hashes = new SortedDictionary<uint, string>();
-            foreach (var kvp in filePaths)
-            {
-                var hash = kvp.Key.HashFileName();
-                if (hashes.ContainsKey(hash) == true)
-                {
-                    throw new InvalidOperationException();
-                }
-                hashes[hash] = kvp.Value;
             }
 
             using (var output = File.Open(outputPath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
@@ -127,7 +127,7 @@ namespace Gibbed.Visceral.PackBig
                 // write a dummy header
                 output.Seek(0, SeekOrigin.Begin);
                 big.Entries.Clear();
-                foreach (var kvp in hashes)
+                foreach (var kvp in paths)
                 {
                     big.Entries.Add(new BigFile.Entry()
                         {
@@ -149,7 +149,7 @@ namespace Gibbed.Visceral.PackBig
                     Console.WriteLine("Writing to disk...");
                 }
 
-                foreach (var kvp in hashes)
+                foreach (var kvp in paths)
                 {
                     if (verbose == true)
                     {
