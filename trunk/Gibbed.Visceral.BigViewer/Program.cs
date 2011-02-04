@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Gibbed.Visceral.ArchiveViewer
+namespace Gibbed.Visceral.BigViewer
 {
     static class Program
     {

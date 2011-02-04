@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Gibbed.Visceral.FileFormats;
 //using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 
-namespace Gibbed.Visceral.ArchiveViewer
+namespace Gibbed.Visceral.BigViewer
 {
 	public partial class SaveProgress : Form
 	{

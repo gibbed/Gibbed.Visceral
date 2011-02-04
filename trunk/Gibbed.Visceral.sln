@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.FileFormats
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Helpers", "Gibbed.Helpers\Gibbed.Helpers.csproj", "{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.ArchiveViewer", "Gibbed.Visceral.ArchiveViewer\Gibbed.Visceral.ArchiveViewer.csproj", "{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigViewer", "Gibbed.Visceral.BigViewer\Gibbed.Visceral.BigViewer.csproj", "{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.Setup", "Gibbed.Visceral.Setup\Gibbed.Visceral.Setup.csproj", "{A6F4ED91-5078-4151-B1E5-03C094EA6D21}"
 EndProject

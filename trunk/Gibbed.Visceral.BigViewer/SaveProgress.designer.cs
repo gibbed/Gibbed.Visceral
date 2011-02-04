@@ -1,4 +1,4 @@
-﻿namespace Gibbed.Visceral.ArchiveViewer
+﻿namespace Gibbed.Visceral.BigViewer
 {
 	partial class SaveProgress
 	{

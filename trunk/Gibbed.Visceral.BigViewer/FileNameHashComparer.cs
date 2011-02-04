@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Gibbed.Visceral.ArchiveViewer
+namespace Gibbed.Visceral.BigViewer
 {
     internal class FileNameHashComparer : IComparer<uint>
     {

@@ -8,8 +8,8 @@
     <ProjectGuid>{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gibbed.Visceral.ArchiveViewer</RootNamespace>
-    <AssemblyName>Gibbed.Visceral.ArchiveViewer</AssemblyName>
+    <RootNamespace>Gibbed.Visceral.BigViewer</RootNamespace>
+    <AssemblyName>Gibbed.Visceral.BigViewer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -102,9 +102,6 @@
       <Project>{A6F4ED91-5078-4151-B1E5-03C094EA6D21}</Project>
       <Name>Gibbed.Visceral.Setup</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="rune.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
