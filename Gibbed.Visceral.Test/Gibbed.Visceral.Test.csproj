@@ -55,7 +55,7 @@
       <Project>{417F220E-EB47-46D2-A273-2878DAFD7B74}</Project>
       <Name>Gibbed.Visceral.FileFormats</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gibbed.Visceral.UnpackSTR\Gibbed.Visceral.UnpackSTR.csproj">
+    <ProjectReference Include="..\Gibbed.Visceral.StrUnpack\Gibbed.Visceral.StrUnpack.csproj">
       <Project>{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}</Project>
       <Name>Gibbed.Visceral.UnpackSTR</Name>
     </ProjectReference>
