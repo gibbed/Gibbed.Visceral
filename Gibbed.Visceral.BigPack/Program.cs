@@ -6,7 +6,7 @@ using Gibbed.Helpers;
 using Gibbed.Visceral.FileFormats;
 using NDesk.Options;
 
-namespace Gibbed.Visceral.PackBig
+namespace Gibbed.Visceral.BigPack
 {
     internal class Program
     {
@@ -96,8 +96,16 @@ namespace Gibbed.Visceral.PackBig
                     uint hash = 0xFFFFFFFF;
                     if (partPath.ToUpper().StartsWith("__UNKNOWN") == true)
                     {
+                        string partName;
+                        
+                        partName = Path.GetFileNameWithoutExtension(partPath);
+                        if (partName.Length > 8)
+                        {
+                            partName = partName.Substring(0, 8);
+                        }
+
                         hash = uint.Parse(
-                            Path.GetFileNameWithoutExtension(fullPath),
+                            partName,
                             System.Globalization.NumberStyles.AllowHexSpecifier);
                     }
                     else
