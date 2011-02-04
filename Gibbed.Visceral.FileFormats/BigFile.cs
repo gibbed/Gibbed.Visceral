@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Gibbed.Helpers;
@@ -17,10 +16,24 @@ namespace Gibbed.Visceral.FileFormats
         }
 
         public List<Entry> Entries = new List<Entry>();
+        public uint TotalFileSize;
 
         public void Serialize(Stream output)
         {
-            throw new NotImplementedException();
+            output.WriteValueU32(0x42494748, false);
+            output.WriteValueU32(this.TotalFileSize, true);
+            output.WriteValueS32(this.Entries.Count, false);
+            output.WriteValueS32(16 + (this.Entries.Count * 12) + 8, false);
+
+            foreach (var entry in this.Entries)
+            {
+                output.WriteValueU32(entry.Offset, false);
+                output.WriteValueU32(entry.Size, false);
+                output.WriteValueU32(entry.Name, false);
+            }
+
+            output.WriteValueU32(0x4C323833, false);
+            output.WriteValueU32(0x15050000, false);
         }
 
         public void Deserialize(Stream input)
@@ -33,7 +46,7 @@ namespace Gibbed.Visceral.FileFormats
                 throw new FormatException("unknown magic");
             }
 
-            uint totalFileSize = input.ReadValueU32(true); // :wtc:
+            this.TotalFileSize = input.ReadValueU32(true); // :wtc:
             uint fileCount = input.ReadValueU32(false);
             uint headerSize = input.ReadValueU32(false);
 
