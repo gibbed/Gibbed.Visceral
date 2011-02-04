@@ -103,10 +103,11 @@ namespace Gibbed.Visceral.UnpackSTR
                         throw new FormatException("read too much header data?");
                     }
 
+                    /*
                     if (Enum.IsDefined(typeof(StreamSet.FileBuild), fileInfo.Build) == false)
                     {
                         throw new FormatException("unsupported build type " + ((uint)fileInfo.Build).ToString("X8"));
-                    }
+                    }*/
                     /*else if (fileInfo.Type != fileInfo.Type2)
                     {
                         throw new FormatException("type hashes don't match");
@@ -133,7 +134,18 @@ namespace Gibbed.Visceral.UnpackSTR
                     }
 
                     xml.WriteStartElement("stream");
-                    xml.WriteAttributeString("build", fileInfo.Build.ToString());
+                    
+                    //xml.WriteAttributeString("build", fileInfo.Build.ToString());
+
+                    if (Enum.IsDefined(typeof(StreamSet.FileBuild), fileInfo.Build) == false)
+                    {
+                        xml.WriteAttributeString("build", ((uint)fileInfo.Build).ToString("X8"));
+                    }
+                    else
+                    {
+                        xml.WriteAttributeString("build", fileInfo.Build.ToString());
+                    }
+                    
                     xml.WriteAttributeString("u04", fileInfo.Unknown04.ToString("X4"));
                     xml.WriteAttributeString("u06", fileInfo.Unknown06.ToString("X4"));
                     xml.WriteAttributeString("type", fileInfo.Type.ToString("X8"));
