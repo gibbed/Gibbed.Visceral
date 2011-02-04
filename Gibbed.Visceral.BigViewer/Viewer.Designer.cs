@@ -1,4 +1,4 @@
-﻿namespace Gibbed.Visceral.ArchiveViewer
+﻿namespace Gibbed.Visceral.BigViewer
 {
     partial class Viewer
     {
@@ -77,7 +77,7 @@
             // 
             // openButton
             // 
-            this.openButton.Image = global::Gibbed.Visceral.ArchiveViewer.Properties.Resources.OpenArchive;
+            this.openButton.Image = global::Gibbed.Visceral.BigViewer.Properties.Resources.OpenArchive;
             this.openButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(56, 22);
@@ -86,7 +86,7 @@
             // 
             // saveAllButton
             // 
-            this.saveAllButton.Image = global::Gibbed.Visceral.ArchiveViewer.Properties.Resources.SaveAllFiles;
+            this.saveAllButton.Image = global::Gibbed.Visceral.BigViewer.Properties.Resources.SaveAllFiles;
             this.saveAllButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveAllButton.Name = "saveAllButton";
             this.saveAllButton.Size = new System.Drawing.Size(68, 22);
@@ -97,7 +97,7 @@
             // 
             this.reloadListsButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveKnownListToolStripMenuItem});
-            this.reloadListsButton.Image = global::Gibbed.Visceral.ArchiveViewer.Properties.Resources.ReloadLists;
+            this.reloadListsButton.Image = global::Gibbed.Visceral.BigViewer.Properties.Resources.ReloadLists;
             this.reloadListsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reloadListsButton.Name = "reloadListsButton";
             this.reloadListsButton.Size = new System.Drawing.Size(101, 22);
@@ -118,7 +118,7 @@
             this.saveDuplicateNamesMenuItem,
             this.dontOverwriteFilesMenuItem,
             this.dontSaveAudioFilesMenuItem});
-            this.settingsButton.Image = global::Gibbed.Visceral.ArchiveViewer.Properties.Resources.Settings;
+            this.settingsButton.Image = global::Gibbed.Visceral.BigViewer.Properties.Resources.Settings;
             this.settingsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(78, 22);

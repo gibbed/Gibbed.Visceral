@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Gibbed.Visceral.ArchiveViewer.Properties
+namespace Gibbed.Visceral.BigViewer.Properties
 {
 
 

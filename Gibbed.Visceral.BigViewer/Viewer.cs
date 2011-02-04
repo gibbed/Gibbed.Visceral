@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Gibbed.Visceral.FileFormats;
 
-namespace Gibbed.Visceral.ArchiveViewer
+namespace Gibbed.Visceral.BigViewer
 {
     public partial class Viewer : Form
     {
