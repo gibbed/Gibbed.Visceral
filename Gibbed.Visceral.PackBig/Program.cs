@@ -91,7 +91,7 @@ namespace Gibbed.Visceral.PackBig
                 foreach (string path in Directory.GetFiles(inputPath, "*", SearchOption.AllDirectories))
                 {
                     string fullPath = Path.GetFullPath(path);
-                    string partPath = fullPath.Substring(inputPath.Length + 1);
+                    string partPath = fullPath.Substring(inputPath.Length + 1).ToLowerInvariant();
 
                     if (filePaths.ContainsKey(partPath) == true)
                     {
