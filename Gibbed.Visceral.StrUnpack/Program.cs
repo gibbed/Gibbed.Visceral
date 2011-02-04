@@ -7,7 +7,7 @@ using Gibbed.Visceral.FileFormats;
 using NDesk.Options;
 using StreamSet = Gibbed.Visceral.FileFormats.StreamSet;
 
-namespace Gibbed.Visceral.UnpackSTR
+namespace Gibbed.Visceral.StrUnpack
 {
     public class Program
     {
