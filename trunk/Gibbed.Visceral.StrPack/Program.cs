@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Gibbed.Visceral.PackSTR
+namespace Gibbed.Visceral.StrPack
 {
     public class Program
     {
