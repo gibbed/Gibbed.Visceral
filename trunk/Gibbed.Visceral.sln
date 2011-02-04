@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellane
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archives", "Archives", "{D27F36BE-4866-40A9-ADA3-6FD88178907A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.PackBig", "Gibbed.Visceral.PackBig\Gibbed.Visceral.PackBig.csproj", "{2F5EC951-BA0D-418C-8028-C3987C3D8359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigPack", "Gibbed.Visceral.BigPack\Gibbed.Visceral.BigPack.csproj", "{2F5EC951-BA0D-418C-8028-C3987C3D8359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
