@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.Setup", "Gi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.RefPack", "Gibbed.RefPack\Gibbed.RefPack.csproj", "{479C9180-E748-4F45-9E12-26E73D7F3442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.UnpackSTR", "Gibbed.Visceral.UnpackSTR\Gibbed.Visceral.UnpackSTR.csproj", "{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrUnpack", "Gibbed.Visceral.StrUnpack\Gibbed.Visceral.StrUnpack.csproj", "{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDesk.Options", "NDesk.Options\NDesk.Options.csproj", "{C98A6CD6-9422-4B35-8B7A-F520D75534D1}"
 EndProject
