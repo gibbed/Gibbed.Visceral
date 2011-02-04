@@ -8,8 +8,8 @@
     <ProjectGuid>{091623F5-E825-4B50-B59D-9692E540DC63}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gibbed.Visceral.PackSTR</RootNamespace>
-    <AssemblyName>Gibbed.Visceral.PackSTR</AssemblyName>
+    <RootNamespace>Gibbed.Visceral.StrPack</RootNamespace>
+    <AssemblyName>Gibbed.Visceral.StrPack</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

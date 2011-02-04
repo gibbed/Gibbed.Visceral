@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gibbed.Visceral.PackSTR")]
+[assembly: AssemblyTitle("Gibbed.Visceral.StrPack")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Gibbed.Visceral.PackSTR")]
+[assembly: AssemblyProduct("Gibbed.Visceral.StrPack")]
 [assembly: AssemblyCopyright("Copyright © Gibbed 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.ConvertTG4"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Squish", "Gibbed.Squish\Gibbed.Squish.csproj", "{242D0738-AA4C-4C9C-A218-891A8F55559C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.PackSTR", "Gibbed.Visceral.PackSTR\Gibbed.Visceral.PackSTR.csproj", "{091623F5-E825-4B50-B59D-9692E540DC63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrPack", "Gibbed.Visceral.StrPack\Gibbed.Visceral.StrPack.csproj", "{091623F5-E825-4B50-B59D-9692E540DC63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Formats", "Formats", "{C4E89AD3-6C63-4EF3-B4CB-1BCC49E47823}"
 EndProject
