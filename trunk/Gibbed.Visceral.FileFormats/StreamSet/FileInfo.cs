@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using Gibbed.Helpers;
-using System.IO;
 
 namespace Gibbed.Visceral.FileFormats.StreamSet
 {
     public class FileInfo
     {
         public FileBuild Build;
-        public ushort Unknown04; // flags?
-        public ushort Unknown06; // flags?
+        public ushort Alignment;
+        public ushort Flags;
         
         public uint Type;
 
@@ -26,11 +22,31 @@ namespace Gibbed.Visceral.FileFormats.StreamSet
         public string FileName;
         public string TypeName;
 
+        public void Serialize(Stream output, bool littleEndian)
+        {
+            output.WriteValueU32((uint)this.Build, littleEndian);
+            output.WriteValueU16(this.Alignment, littleEndian);
+            output.WriteValueU16(this.Flags, littleEndian);
+
+            output.WriteValueU32(this.Type, littleEndian);
+
+            output.WriteValueU32(this.Unknown0C, littleEndian);
+            output.WriteValueU32(this.Type2, littleEndian);
+            output.WriteValueU32(this.Unknown14, littleEndian);
+            output.WriteValueU32(this.Unknown18, littleEndian);
+
+            output.WriteValueU32(this.TotalSize, littleEndian);
+
+            output.WriteStringZ(this.BaseName);
+            output.WriteStringZ(this.FileName);
+            output.WriteStringZ(this.TypeName);
+        }
+
         public void Deserialize(Stream input, bool littleEndian)
         {
             this.Build = (FileBuild)input.ReadValueU32(littleEndian);
-            this.Unknown04 = input.ReadValueU16(littleEndian);
-            this.Unknown06 = input.ReadValueU16(littleEndian);
+            this.Alignment = input.ReadValueU16(littleEndian);
+            this.Flags = input.ReadValueU16(littleEndian);
 
             this.Type = input.ReadValueU32(littleEndian);
 

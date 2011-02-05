@@ -201,7 +201,7 @@
             this.Controls.Add(this.mainToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Viewer";
-            this.Text = "Gibbed\'s Visceral Archive Viewer";
+            this.Text = "Gibbed\'s Visceral Big Viewer";
             this.Load += new System.EventHandler(this.OnLoad);
             this.mainToolStrip.ResumeLayout(false);
             this.mainToolStrip.PerformLayout();
