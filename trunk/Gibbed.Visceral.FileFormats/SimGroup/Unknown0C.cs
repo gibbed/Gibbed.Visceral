@@ -22,8 +22,24 @@
 
 namespace Gibbed.Visceral.FileFormats.SimGroup
 {
-    public class Unknown91C8773C
+    public class Unknown0C
     {
-
+        public uint Unknown00;
+        public uint Unknown04;
+        public uint Unknown08Offset; // index into Unknown08 data
+        public uint Unknown0CX;
+        public uint Unknown10;
+        public uint Unknown14;
+        public uint Unknown18;
+        public uint Unknown1C;
+        public uint Unknown20Offset;
+        public uint Unknown24Offset;
+        public uint Unknown28;
+        public uint Unknown2C;
+        public uint Unknown30Offset;
+        public uint Unknown34;
+        public uint Unknown38;
+        public uint Unknown3C;
+        public uint Unknown40;
     }
 }

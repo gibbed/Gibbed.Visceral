@@ -20,10 +20,29 @@
  *    distribution.
  */
 
+using System.Runtime.InteropServices;
+
 namespace Gibbed.Visceral.FileFormats.SimGroup
 {
-    public class Unknown91C8773C
+    [StructLayout(LayoutKind.Sequential)]
+    public struct FileHeader
     {
-
+        public uint Unknown00;
+        public uint HeaderSize;
+        public uint Unknown08Offset;
+        public uint Unknown0COffset;
+        public uint Unknown10Offset;
+        public ushort Unknown14Count;
+        public ushort Unknown16Count;
+        public ushort Unknown18Count;
+        public ushort Unknown1A;
+        public uint Unknown1C;
+        public uint Unknown20;
+        public uint Type; // Hashes.SimGroup
+        public uint Version; // 0x00010003
+        public uint Unknown2C;
+        public uint Unknown30;
+        public uint Unknown34;
+        public uint Unknown38;
     }
 }
