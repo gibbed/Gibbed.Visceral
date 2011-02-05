@@ -12,6 +12,11 @@ namespace Gibbed.Visceral.FileFormats
         public List<StreamSet.ContentInfo> Contents
             = new List<StreamSet.ContentInfo>();
 
+        public void Serialize(Stream output)
+        {
+            throw new NotSupportedException();
+        }
+
         public void Deserialize(Stream input)
         {
             this.Contents.Clear();

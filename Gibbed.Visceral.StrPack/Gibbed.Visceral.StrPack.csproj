@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,8 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyFileInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gibbed.Helpers\Gibbed.Helpers.csproj">
+      <Project>{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}</Project>
+      <Name>Gibbed.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gibbed.Visceral.FileFormats\Gibbed.Visceral.FileFormats.csproj">
+      <Project>{417F220E-EB47-46D2-A273-2878DAFD7B74}</Project>
+      <Name>Gibbed.Visceral.FileFormats</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NDesk.Options\NDesk.Options.csproj">
+      <Project>{C98A6CD6-9422-4B35-8B7A-F520D75534D1}</Project>
+      <Name>NDesk.Options</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

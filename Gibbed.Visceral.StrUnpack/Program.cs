@@ -21,6 +21,7 @@ namespace Gibbed.Visceral.StrUnpack
             bool verbose = false;
             bool overwriteFiles = true;
             bool showHelp = false;
+            bool debugMode = false;
 
             OptionSet options = new OptionSet()
             {
@@ -28,6 +29,11 @@ namespace Gibbed.Visceral.StrUnpack
                     "v|verbose",
                     "be verbose (list files)",
                     v => verbose = v != null
+                },
+                {
+                    "d|debug",
+                    "debug mode",
+                    v => debugMode = v != null
                 },
                 {
                     "o|overwrite",
@@ -57,8 +63,8 @@ namespace Gibbed.Visceral.StrUnpack
 
             if (extra.Count < 1 || extra.Count > 2 || showHelp == true)
             {
-                Console.WriteLine("Usage: {0} [OPTIONS]+ input_sarc [output_directory]", GetExecutableName());
-                Console.WriteLine("Unpack specified small archive.");
+                Console.WriteLine("Usage: {0} [OPTIONS]+ input_str [output_directory]", GetExecutableName());
+                Console.WriteLine("Unpack specified stream set.");
                 Console.WriteLine();
                 Console.WriteLine("Options:");
                 options.WriteOptionDescriptions(Console.Out);
@@ -83,6 +89,7 @@ namespace Gibbed.Visceral.StrUnpack
                 var set = new StreamSetFile();
                 set.Deserialize(input);
 
+                int counter = 0;
                 for (int i = 0; i < set.Contents.Count; )
                 {
                     var headerInfo = set.Contents[i];
@@ -117,9 +124,15 @@ namespace Gibbed.Visceral.StrUnpack
                         throw new FormatException("type name hash and type hash don't match");
                     }*/
 
-                    var fileName =
-                        i.ToString("D4") + "_" +
+                    string fileName;
+
+                    fileName =
+                        counter.ToString("D4") + "_" +
                         fileInfo.GetSaneFileName();
+                    counter++;
+
+                    fileName =
+                        Path.Combine(fileInfo.TypeName, fileName);
 
                     i++;
 
@@ -146,8 +159,8 @@ namespace Gibbed.Visceral.StrUnpack
                         xml.WriteAttributeString("build", fileInfo.Build.ToString());
                     }
                     
-                    xml.WriteAttributeString("u04", fileInfo.Unknown04.ToString("X4"));
-                    xml.WriteAttributeString("u06", fileInfo.Unknown06.ToString("X4"));
+                    xml.WriteAttributeString("alignment", fileInfo.Alignment.ToString("X4"));
+                    xml.WriteAttributeString("flags", fileInfo.Flags.ToString("X4"));
                     xml.WriteAttributeString("type", fileInfo.Type.ToString("X8"));
                     xml.WriteAttributeString("u0C", fileInfo.Unknown0C.ToString("X8"));
                     xml.WriteAttributeString("type2", fileInfo.Type2.ToString("X8"));
@@ -156,8 +169,16 @@ namespace Gibbed.Visceral.StrUnpack
                     xml.WriteAttributeString("base_name", fileInfo.BaseName);
                     xml.WriteAttributeString("file_name", fileInfo.FileName);
                     xml.WriteAttributeString("type_name", fileInfo.TypeName);
-                    xml.WriteString(fileName);
-                    xml.WriteEndElement();
+
+                    if (debugMode == false)
+                    {
+                        xml.WriteString(fileName);
+                    }
+
+                    if (debugMode == true)
+                    {
+                        xml.WriteStartElement("blocks");
+                    }
 
                     Directory.CreateDirectory(Path.GetDirectoryName(outputName));
 
@@ -177,8 +198,18 @@ namespace Gibbed.Visceral.StrUnpack
 
                             input.Seek(dataInfo.Offset, SeekOrigin.Begin);
 
+                            if (debugMode == true)
+                            {
+                                xml.WriteStartElement("block");
+                            }
+
                             if (dataInfo.Type == StreamSet.ContentType.CompressedData)
                             {
+                                if (debugMode == true)
+                                {
+                                    xml.WriteAttributeString("type", "compressed");
+                                }
+
                                 var compressedSize = input.ReadValueU32(set.LittleEndian);
                                 if (4 + compressedSize > dataInfo.Size)
                                 {
@@ -192,17 +223,51 @@ namespace Gibbed.Visceral.StrUnpack
                                 uint writeSize = Math.Min(leftSize, (uint)compressedData.Length);
                                 output.Write(compressedData, 0, (int)writeSize);
                                 readSize += writeSize;
+
+                                if (debugMode == true)
+                                {
+                                    xml.WriteAttributeString("offset", dataInfo.Offset.ToString("X8"));
+                                    xml.WriteAttributeString("tsize", (dataInfo.Size + 12).ToString());
+                                    xml.WriteAttributeString("size", dataInfo.Size.ToString());
+                                    xml.WriteAttributeString("csize", compressedSize.ToString());
+                                    xml.WriteAttributeString("usize1", writeSize.ToString());
+                                    xml.WriteAttributeString("usize2", compressedData.Length.ToString());
+                                }
                             }
                             else
                             {
+                                if (debugMode == true)
+                                {
+                                    xml.WriteAttributeString("type", "uncompressed");
+                                }
+
                                 uint writeSize = Math.Min(leftSize, dataInfo.Size);
                                 output.WriteFromStream(input, writeSize);
                                 readSize += writeSize;
+
+                                if (debugMode == true)
+                                {
+                                    xml.WriteAttributeString("offset", dataInfo.Offset.ToString("X8"));
+                                    xml.WriteAttributeString("tsize", (dataInfo.Size + 12).ToString());
+                                    xml.WriteAttributeString("size", dataInfo.Size.ToString());
+                                }
+                            }
+
+                            if (debugMode == true)
+                            {
+                                xml.WriteEndElement();
                             }
 
                             ++i;
                         }
                     }
+
+                    if (debugMode == true)
+                    {
+                        xml.WriteEndElement();
+                    }
+                    
+                    xml.WriteEndElement();
                 }
 
                 xml.WriteEndElement();
