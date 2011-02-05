@@ -44,6 +44,8 @@
     <Compile Include="Hashes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimGroupFile.cs" />
+    <Compile Include="SimGroup\FileHeader.cs" />
+    <Compile Include="SimGroup\Unknown0C.cs" />
     <Compile Include="SimGroup\Unknown91C8773C.cs" />
     <Compile Include="StreamSetFile.cs" />
     <Compile Include="StreamSet\BlockType.cs" />
