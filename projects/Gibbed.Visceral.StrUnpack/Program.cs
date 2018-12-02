@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Gibbed.Helpers;
+using Gibbed.IO;
 using Gibbed.Visceral.FileFormats;
 using NDesk.Options;
 using StreamSet = Gibbed.Visceral.FileFormats.StreamSet;
@@ -125,7 +125,7 @@ namespace Gibbed.Visceral.StrUnpack
                     input.Seek(headerInfo.Offset, SeekOrigin.Begin);
 
                     var fileInfo = new StreamSet.FileInfo();
-                    fileInfo.Deserialize(input, set.LittleEndian);
+                    fileInfo.Deserialize(input, set.Endian);
 
                     if (input.Position > headerInfo.Offset + headerInfo.Size)
                     {
@@ -232,13 +232,13 @@ namespace Gibbed.Visceral.StrUnpack
                                     xml.WriteAttributeString("type", "compressed");
                                 }
 
-                                var compressedSize = input.ReadValueU32(set.LittleEndian);
+                                var compressedSize = input.ReadValueU32(set.Endian);
                                 if (4 + compressedSize > dataInfo.Size)
                                 {
                                     throw new InvalidOperationException();
                                 }
 
-                                var compressedStream = input.ReadToMemoryStream(compressedSize);
+                                var compressedStream = input.ReadToMemoryStream((int)compressedSize);
                                 var compressedData = Gibbed.RefPack.Decompression.Decompress(
                                     compressedStream);
 

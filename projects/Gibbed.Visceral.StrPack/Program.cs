@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Xml.XPath;
-using Gibbed.Helpers;
+using Gibbed.IO;
 using NDesk.Options;
 using StreamSet = Gibbed.Visceral.FileFormats.StreamSet;
 
@@ -169,7 +169,7 @@ namespace Gibbed.Visceral.StrPack
 
                         var info = new MemoryStream();
                         info.WriteValueU32((uint)StreamSet.ContentType.Header);
-                        stream.Serialize(info, true);
+                        stream.Serialize(info, Endian.Little);
                         info.SetLength(info.Length.Align(4));
                         info.Position = 0;
 

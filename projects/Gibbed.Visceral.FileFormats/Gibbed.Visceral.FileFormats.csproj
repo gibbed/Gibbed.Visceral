@@ -2,30 +2,27 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3E51977D-CF8C-4677-854F-2C0FC7D022B1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{417F220E-EB47-46D2-A273-2878DAFD7B74}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gibbed.Visceral.Test</RootNamespace>
-    <AssemblyName>Gibbed.Visceral.Test</AssemblyName>
+    <RootNamespace>Gibbed.Visceral.FileFormats</RootNamespace>
+    <AssemblyName>Gibbed.Visceral.FileFormats</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BigFile.cs" />
+    <Compile Include="Hashes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimGroupFile.cs" />
+    <Compile Include="SimGroup\FileHeader.cs" />
+    <Compile Include="SimGroup\Unknown0C.cs" />
+    <Compile Include="SimGroup\Unknown91C8773C.cs" />
+    <Compile Include="StreamSetFile.cs" />
+    <Compile Include="StreamSet\BlockType.cs" />
+    <Compile Include="StreamSet\FileBuild.cs" />
+    <Compile Include="StreamSet\ContentInfo.cs" />
+    <Compile Include="StreamSet\ContentType.cs" />
+    <Compile Include="StreamSet\FileInfo.cs" />
+    <Compile Include="StringHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gibbed.RefPack\Gibbed.RefPack.csproj">
-      <Project>{479C9180-E748-4F45-9E12-26E73D7F3442}</Project>
-      <Name>Gibbed.RefPack</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gibbed.Visceral.FileFormats\Gibbed.Visceral.FileFormats.csproj">
-      <Project>{417F220E-EB47-46D2-A273-2878DAFD7B74}</Project>
-      <Name>Gibbed.Visceral.FileFormats</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gibbed.Visceral.StrUnpack\Gibbed.Visceral.StrUnpack.csproj">
-      <Project>{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}</Project>
-      <Name>Gibbed.Visceral.UnpackSTR</Name>
+    <ProjectReference Include="..\Gibbed.IO\Gibbed.IO.csproj">
+      <Project>{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}</Project>
+      <Name>Gibbed.IO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

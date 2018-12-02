@@ -23,7 +23,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Gibbed.Helpers;
+using Gibbed.IO;
 
 namespace Gibbed.Visceral.FileFormats
 {
@@ -42,44 +42,48 @@ namespace Gibbed.Visceral.FileFormats
 
         public void Serialize(Stream output)
         {
-            output.WriteValueU32(0x42494748, false);
-            output.WriteValueU32(this.TotalFileSize, true);
-            output.WriteValueS32(this.Entries.Count, false);
-            output.WriteValueS32(16 + (this.Entries.Count * 12) + 8, false);
+            const Endian endian = Endian.Big;
+
+            output.WriteValueU32(0x42494748, endian);
+            output.WriteValueU32(this.TotalFileSize, Endian.Little);
+            output.WriteValueS32(this.Entries.Count, endian);
+            output.WriteValueS32(16 + (this.Entries.Count * 12) + 8, endian);
 
             foreach (var entry in this.Entries)
             {
-                output.WriteValueU32(entry.Offset, false);
-                output.WriteValueU32(entry.Size, false);
-                output.WriteValueU32(entry.Name, false);
+                output.WriteValueU32(entry.Offset, endian);
+                output.WriteValueU32(entry.Size, endian);
+                output.WriteValueU32(entry.Name, endian);
             }
 
-            output.WriteValueU32(0x4C323833, false);
-            output.WriteValueU32(0x15050000, false);
+            output.WriteValueU32(0x4C323833, endian);
+            output.WriteValueU32(0x15050000, endian);
         }
 
         public void Deserialize(Stream input)
         {
+            const Endian endian = Endian.Big;
+
             input.Seek(0, SeekOrigin.Begin);
 
-            var magic = input.ReadValueU32(false);
+            var magic = input.ReadValueU32(endian);
             if (magic != 0x42494748) // BIGH
             {
                 throw new FormatException("unknown magic");
             }
 
-            this.TotalFileSize = input.ReadValueU32(true); // :wtc:
-            uint fileCount = input.ReadValueU32(false);
-            uint headerSize = input.ReadValueU32(false);
+            this.TotalFileSize = input.ReadValueU32(Endian.Little); // :wtc:
+            uint fileCount = input.ReadValueU32(endian);
+            uint headerSize = input.ReadValueU32(endian);
 
             this.Entries.Clear();
             var duplicateNames = new List<uint>();
             for (uint i = 0; i < fileCount; i++)
             {
                 var entry = new Entry();
-                entry.Offset = input.ReadValueU32(false);
-                entry.Size = input.ReadValueU32(false);
-                entry.Name = input.ReadValueU32(false);
+                entry.Offset = input.ReadValueU32(endian);
+                entry.Size = input.ReadValueU32(endian);
+                entry.Name = input.ReadValueU32(endian);
 
                 if (duplicateNames.Contains(entry.Name) == true)
                 {

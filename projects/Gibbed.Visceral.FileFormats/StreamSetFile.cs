@@ -24,13 +24,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Gibbed.Helpers;
+using Gibbed.IO;
 
 namespace Gibbed.Visceral.FileFormats
 {
     public class StreamSetFile
     {
-        public bool LittleEndian = true;
+        public Endian Endian = Endian.Little;
         public List<StreamSet.ContentInfo> Contents
             = new List<StreamSet.ContentInfo>();
 
@@ -50,21 +50,21 @@ namespace Gibbed.Visceral.FileFormats
 
             // read options
             {
-                var magic = input.ReadValueU32(true);
+                var magic = input.ReadValueU32(Endian.Little);
                 if (magic != 0x6F6C7333 && magic.Swap() != 0x6F6C7333)
                 {
                     throw new FormatException();
                 }
 
-                this.LittleEndian = magic == 0x6F6C7333;
-                var size = input.ReadValueU32(this.LittleEndian);
+                this.Endian = magic == 0x6F6C7333 ? Endian.Little : Endian.Big;
+                var size = input.ReadValueU32(this.Endian);
                 if (size != 12)
                 {
                     throw new FormatException();
                 }
 
-                var unknown00 = input.ReadValueU16(this.LittleEndian);
-                var unknown02 = input.ReadValueU16(this.LittleEndian);
+                var unknown00 = input.ReadValueU16(this.Endian);
+                var unknown02 = input.ReadValueU16(this.Endian);
 
                 /* Dead Space:
                  * unknown00 = 2
@@ -84,8 +84,8 @@ namespace Gibbed.Visceral.FileFormats
             while (input.Position + 8 <= input.Length)
             {
                 long blockPosition = input.Position;
-                var blockType = (StreamSet.BlockType)input.ReadValueU32(this.LittleEndian);
-                var blockSize = input.ReadValueU32(this.LittleEndian);
+                var blockType = (StreamSet.BlockType)input.ReadValueU32(this.Endian);
+                var blockSize = input.ReadValueU32(this.Endian);
 
                 if (blockSize < 8 ||
                     blockPosition + blockSize > input.Length)
@@ -97,7 +97,7 @@ namespace Gibbed.Visceral.FileFormats
                 {
                     case StreamSet.BlockType.Content:
                     {
-                        var type = (StreamSet.ContentType)input.ReadValueU32(this.LittleEndian);
+                        var type = (StreamSet.ContentType)input.ReadValueU32(this.Endian);
                         Debug.Assert(
                             type == StreamSet.ContentType.Header ||
                             type == StreamSet.ContentType.Data ||

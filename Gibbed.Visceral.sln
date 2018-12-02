@@ -1,27 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.Test", "Gibbed.Visceral.Test\Gibbed.Visceral.Test.csproj", "{3E51977D-CF8C-4677-854F-2C0FC7D022B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.FileFormats", "projects\Gibbed.Visceral.FileFormats\Gibbed.Visceral.FileFormats.csproj", "{417F220E-EB47-46D2-A273-2878DAFD7B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.FileFormats", "Gibbed.Visceral.FileFormats\Gibbed.Visceral.FileFormats.csproj", "{417F220E-EB47-46D2-A273-2878DAFD7B74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigViewer", "projects\Gibbed.Visceral.BigViewer\Gibbed.Visceral.BigViewer.csproj", "{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Helpers", "Gibbed.Helpers\Gibbed.Helpers.csproj", "{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.Setup", "projects\Gibbed.Visceral.Setup\Gibbed.Visceral.Setup.csproj", "{A6F4ED91-5078-4151-B1E5-03C094EA6D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigViewer", "Gibbed.Visceral.BigViewer\Gibbed.Visceral.BigViewer.csproj", "{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.RefPack", "projects\Gibbed.RefPack\Gibbed.RefPack.csproj", "{479C9180-E748-4F45-9E12-26E73D7F3442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.Setup", "Gibbed.Visceral.Setup\Gibbed.Visceral.Setup.csproj", "{A6F4ED91-5078-4151-B1E5-03C094EA6D21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrUnpack", "projects\Gibbed.Visceral.StrUnpack\Gibbed.Visceral.StrUnpack.csproj", "{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.RefPack", "Gibbed.RefPack\Gibbed.RefPack.csproj", "{479C9180-E748-4F45-9E12-26E73D7F3442}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDesk.Options", "projects\NDesk.Options\NDesk.Options.csproj", "{C98A6CD6-9422-4B35-8B7A-F520D75534D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrUnpack", "Gibbed.Visceral.StrUnpack\Gibbed.Visceral.StrUnpack.csproj", "{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.ConvertTG4", "projects\Gibbed.Visceral.ConvertTG4\Gibbed.Visceral.ConvertTG4.csproj", "{0D24B0B2-3407-4DE1-BD06-BB194ECE0C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDesk.Options", "NDesk.Options\NDesk.Options.csproj", "{C98A6CD6-9422-4B35-8B7A-F520D75534D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Squish", "projects\Gibbed.Squish\Gibbed.Squish.csproj", "{242D0738-AA4C-4C9C-A218-891A8F55559C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.ConvertTG4", "Gibbed.Visceral.ConvertTG4\Gibbed.Visceral.ConvertTG4.csproj", "{0D24B0B2-3407-4DE1-BD06-BB194ECE0C8A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Squish", "Gibbed.Squish\Gibbed.Squish.csproj", "{242D0738-AA4C-4C9C-A218-891A8F55559C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrPack", "Gibbed.Visceral.StrPack\Gibbed.Visceral.StrPack.csproj", "{091623F5-E825-4B50-B59D-9692E540DC63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.StrPack", "projects\Gibbed.Visceral.StrPack\Gibbed.Visceral.StrPack.csproj", "{091623F5-E825-4B50-B59D-9692E540DC63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Formats", "Formats", "{C4E89AD3-6C63-4EF3-B4CB-1BCC49E47823}"
 EndProject
@@ -29,7 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Miscellaneous", "Miscellane
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archives", "Archives", "{D27F36BE-4866-40A9-ADA3-6FD88178907A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigPack", "Gibbed.Visceral.BigPack\Gibbed.Visceral.BigPack.csproj", "{2F5EC951-BA0D-418C-8028-C3987C3D8359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.Visceral.BigPack", "projects\Gibbed.Visceral.BigPack\Gibbed.Visceral.BigPack.csproj", "{2F5EC951-BA0D-418C-8028-C3987C3D8359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gibbed.IO", "projects\Gibbed.IO\Gibbed.IO.csproj", "{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,16 +39,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Debug|x86.ActiveCfg = Debug|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Debug|x86.Build.0 = Debug|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Release|Any CPU.ActiveCfg = Release|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Release|Mixed Platforms.Build.0 = Release|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Release|x86.ActiveCfg = Release|x86
-		{3E51977D-CF8C-4677-854F-2C0FC7D022B1}.Release|x86.Build.0 = Release|x86
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -61,16 +49,6 @@ Global
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{417F220E-EB47-46D2-A273-2878DAFD7B74}.Release|x86.ActiveCfg = Release|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26}.Release|x86.ActiveCfg = Release|Any CPU
 		{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -161,6 +139,16 @@ Global
 		{2F5EC951-BA0D-418C-8028-C3987C3D8359}.Release|Mixed Platforms.Build.0 = Release|x86
 		{2F5EC951-BA0D-418C-8028-C3987C3D8359}.Release|x86.ActiveCfg = Release|x86
 		{2F5EC951-BA0D-418C-8028-C3987C3D8359}.Release|x86.Build.0 = Release|x86
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,7 +160,7 @@ Global
 		{479C9180-E748-4F45-9E12-26E73D7F3442} = {8F902A6D-5A86-4846-8ACF-7350AEE105D2}
 		{C98A6CD6-9422-4B35-8B7A-F520D75534D1} = {8F902A6D-5A86-4846-8ACF-7350AEE105D2}
 		{242D0738-AA4C-4C9C-A218-891A8F55559C} = {8F902A6D-5A86-4846-8ACF-7350AEE105D2}
-		{5162A9FB-4DE1-4BBF-B7A2-5E8116AB0D26} = {8F902A6D-5A86-4846-8ACF-7350AEE105D2}
+		{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A} = {8F902A6D-5A86-4846-8ACF-7350AEE105D2}
 		{AC109BA8-E0E9-45DD-88F4-08A58BF65BFD} = {D27F36BE-4866-40A9-ADA3-6FD88178907A}
 		{091623F5-E825-4B50-B59D-9692E540DC63} = {D27F36BE-4866-40A9-ADA3-6FD88178907A}
 		{96FE9D2B-20C3-4DCB-9BE1-37FD372A22C8} = {D27F36BE-4866-40A9-ADA3-6FD88178907A}

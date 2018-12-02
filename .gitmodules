@@ -1,0 +1,12 @@
+[submodule "projects/Gibbed.IO"]
+	path = projects/Gibbed.IO
+	url = https://github.com/gibbed/Gibbed.IO.git
+[submodule "projects/NDesk.Options"]
+	path = projects/NDesk.Options
+	url = https://github.com/gibbed/NDesk.Options.git
+[submodule "projects/Gibbed.Squish"]
+	path = projects/Gibbed.Squish
+	url = https://github.com/gibbed/Gibbed.Squish.git
+[submodule "projects/Gibbed.RefPack"]
+	path = projects/Gibbed.RefPack
+	url = https://github.com/gibbed/Gibbed.RefPack.git

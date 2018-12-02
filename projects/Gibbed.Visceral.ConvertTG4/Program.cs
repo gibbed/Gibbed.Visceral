@@ -61,10 +61,10 @@ namespace Gibbed.Visceral.ConvertTG4
                 input.Read(data, 0, data.Length);
             }
 
-            var data2 = Gibbed.Squish.Native.DecompressImage(
+            var data2 = Squish.Native.DecompressImage(
                 data,
                 0x0400, 0x0200,
-                (int)Gibbed.Squish.Native.SquishFlags.DXT5);
+                Squish.Native.Flags.DXT5);
 
             var bitmap = MakeBitmapFromDXT(0x0400, 0x0200, data2, true);
             bitmap.Save("eurostileltstdbold32.png");

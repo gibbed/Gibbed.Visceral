@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Gibbed.Helpers;
+using Gibbed.IO;
 using Gibbed.Visceral.FileFormats;
 using NDesk.Options;
 
